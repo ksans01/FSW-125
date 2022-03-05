@@ -16,7 +16,7 @@ let drinks = [
 
 let cars = [
     {make: 'Tesla', model: '3'},
-    {make: 'Ram', model: 1500},
+    {make: 'Ram', model: '1500'},
     {make: 'Toyota', model: 'Sienna'}
 ]
 
