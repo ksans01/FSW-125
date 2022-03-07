@@ -36,3 +36,7 @@ res.send(cars)
 app.listen(port, function() {
   console.log(`App listening on port ${port}!`)
 });
+
+// nodemon automatically refreshes
+// nodemon [node app]
+// ex: nodemon app.js
