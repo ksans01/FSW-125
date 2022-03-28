@@ -16,10 +16,12 @@ const port = 3000;
 
 // fake data
 let books = [
-    {titel: 'this is the 1st title', author: 'this is the 1st author', genre: 'here is the 1st genre', id: uuidv4()},
-    {titel: 'this is the 2nd title', author: 'this is the 2nd author', genre: 'here is the 2nd genre', id: uuidv4()},
-    {titel: 'this is the 3rd title', author: 'this is the 3rd author', genre: 'here is the 3rd genre', id: uuidv4()},
-    {titel: 'this is the 4th title', author: 'this is the 4th author', genre: 'here is the 4th genre', id: uuidv4()},
+    {name: "Dog Food", description: "dry", price: 20, id: uuidv4()},
+    {name: "Cat Food", description: "wet", price: 10, id: uuidv4()},
+    {name: 'Guitar', description: 'Instrument', price: 500, id: uuidv4()},
+    {name: 'PlayStation', description: 'Video Game', price: 500, id: uuidv4()},
+    {name: 'Hammer', description: 'tool', price: 15, id: uuidv4()},
+    {name: 'Dodge Ram', description: 'truck', price: 50000, id: uuidv4()},
 ];
 
 // a route parameter is never null or undefined
