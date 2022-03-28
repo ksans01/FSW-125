@@ -15,11 +15,12 @@ let items = [
     {name: 'Dodge Ram', description: 'truck', price: 50000, id: uuidv4()}
 ];
 
+// routes
 itemsRouter
 // http://localhost:9000/items
 
-    .get('/', (req, res) => {
-        res.send(items)
+    .get('/', (req, res, next) => {
+        res.status(200).send(items)
     }) // GET all
 
 // http://localhost:9000/items/{items.id}
@@ -28,15 +29,22 @@ itemsRouter
         const itemsId = req.params.itemsId;
         const singularItem = items.find(items => items.id === itemsId);
 
-        res.send(singularItem)
+        if (!singularItem) {
+            const error = new Error('This item was not found')
+            return next(error)
+        }
+
+        res.status(200).send(singularItem)
     }) // GET one
+
+    .get('/')
 
     .post('/', (req, res) => {
         const newItem = req.body;
         newItem._id = uuidv4();
         items.push(newItem);
 
-        res.send(newItem)
+        res.status(201).send(newItem)
     }) // POST one
 
     .delete('/:itemsId', (req, res) => {
