@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios'
 import './App.css';
 import Item from './components/Item'
-import AddItemForm from './components/AddItemsForm';
+import ItemFormHandler from './components/ItemFormHandler';
 
 function App() {
   const [items, setItems] = useState([]);
@@ -21,15 +21,38 @@ function App() {
       .catch(err => console.log(err))
   }
 
+  const deleteItem = (itemId) => {
+    axios.delete(`/items/${itemId}`)
+      .then(res => {
+        setItems(prevItems => prevItems.filter(item => item.id !== itemId))
+      })
+      .catch(err => console.log(err))
+  }
+
+  const editItem = (updates, itemId) => {
+    axios.put(`/items/${itemId}`, updates)
+      .then(res =>  {
+        setItems(prevItems => prevItems.map(item => item.id !== itemId ? item : res.data))
+      })
+      .catch(err => console.log(err))
+  }
+
   useEffect(() => {
     getItems()
   }, [])
 
-  const itemsList = items.map(item => <Item {...items} key={item.name}/>)
+  const itemsList = items.map(item => 
+    <Item 
+      {...item} 
+      deleteItem={deleteItem} 
+      editItem={editItem}
+      key={item.name} />)
 
   return (
       <div className='item-container'>
-        <AddItemForm addItem={addItem} />
+        <ItemFormHandler 
+        btnText='Add Item'
+        submit={addItem} />
         {itemsList}
       </div>
     );

@@ -1,7 +1,9 @@
+
+
 const express = require('express')
 const morgan = require('morgan')
 
-const itemsRouter = require('./components/ItemsRouter')
+const itemsRouter = require('./react-app/src/components/ItemsRouter.js')
 
 const app = express()
 const PORT = 9000

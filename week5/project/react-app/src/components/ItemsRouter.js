@@ -1,8 +1,8 @@
 
 const {v4: uuidv4} = require('uuid')
 const express = require('express');
-const app = express();
-app.use(express.json())
+const itemsRouter = express.Router();
+itemsRouter.use(express.json())
 const port = 3000;
 
 // fake data
@@ -15,16 +15,20 @@ let items = [
     {name: 'Dodge Ram', description: 'truck', price: 50000, id: uuidv4()}
 ];
 
-app
-    .get('/items', (req, res) => {
+itemsRouter
+// http://localhost:9000/items
+
+    .get('/', (req, res) => {
         res.send(items)
     }) // GET all
+
+// http://localhost:9000/items/1b842ee9-5327-4e5d-b078-e6fc7baf1ffe
 
     .get('/:itemsId', (req, res) => {
         const itemsId = req.params.itemsId;
         const singularItem = items.find(items => items.id === itemsId);
 
-        res.send(singularItems)
+        res.send(singularItem)
     }) // GET one
 
     .post('/', (req, res) => {
@@ -53,7 +57,8 @@ app
 
     }) // PUT one
 
-    .listen(port, function() {
-    console.log(`App listening on port ${port}!`)
-    });
+    // .listen(port, function() {
+    // console.log(`App listening on port ${port}!`)
+    // });
 
+module.exports = itemsRouter

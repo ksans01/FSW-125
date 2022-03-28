@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-function AddItemForm({ addItems }) {
-    const initialInputs = { name: '', description: '' }
+function ItemFormHandler({ submit, btnText, name, description, id }) {
+    const initialInputs = { name: name || '', description: description || '' }
     const [inputs, setInputs] = useState(initialInputs)
 
     const handleChange = (e) => {
@@ -11,7 +11,7 @@ function AddItemForm({ addItems }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addItems(inputs)
+        submit(inputs, id)
         setInputs(initialInputs);
     }
 
@@ -19,25 +19,25 @@ function AddItemForm({ addItems }) {
         <form onSubmit={handleSubmit}>
             <input 
                 type='text'
-                name='title'
+                name='name'
                 value={inputs.name}
                 onChange={handleChange}
-                placeholder='Title' />
+                placeholder='Name' />
             <input 
                 type='text'
                 name='description'
                 value={inputs.description}
                 onChange={handleChange}
                 placeholder='Description' />
-            <input
+            {/* <input
                 type='text'
                 name='price'
                 value={inputs.price}
                 onChange={handleChange}
-                placeholder='Price' />
-            <button>Add Item</button>
+                placeholder='Price' /> */}
+            <button>{btnText}</button>
         </form>
     )
 }
 
-export default AddItemForm
+export default ItemFormHandler
