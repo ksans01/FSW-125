@@ -1,6 +1,7 @@
 
 const {v4: uuidv4} = require('uuid')
 const express = require('express');
+const { default: Item } = require('./Item');
 const itemsRouter = express.Router();
 itemsRouter.use(express.json())
 const port = 3000;
@@ -22,6 +23,17 @@ itemsRouter
     .get('/', (req, res, next) => {
         res.status(200).send(items)
     }) // GET all
+
+    // .get('/', (req,res) => {
+    //     let name = req.query.name
+    //     let description = req.query.description
+
+    //     items = await Item.findAll().paginate({name: name, description: description}).exec()
+
+    //     res.render('index', {
+    //         items: items
+    //     })
+    // })
 
 // http://localhost:9000/items/{items.id}
 

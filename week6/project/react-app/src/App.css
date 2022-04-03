@@ -1,0 +1,44 @@
+body {
+    background-color: antiquewhite;
+}
+h1, p {
+    margin: 5px;
+    
+}
+
+.item-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 32px;
+}
+
+.item {
+    border: 1px solid rgb(0, 11, 105);
+    background-color: darkcyan;
+    border-radius: 25px;
+    padding: 10px;
+    margin: 5px;
+}
+
+form {
+    border: 1px solid rgb(22, 34, 194);
+    background-color: burlywood;
+    border-radius: 25px;
+    padding: 10px;
+    margin: 5px;
+}
+
+input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid rgb(0, 0, 0);;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+button {
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
