@@ -24,8 +24,8 @@ itemsRouter
 
     .get('/:itemsId', (req, res, next) => {
         const itemsId = req.params.itemsId;
-        const singularItem = items.find(items => items.id === itemsId);
-
+        const singularItem = items.find(items => items._id === itemsId);
+        console.log(singularItem)
         if (!singularItem) {
             const error = new Error('This item was not found');
             return next(error);

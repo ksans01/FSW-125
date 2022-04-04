@@ -15,6 +15,12 @@ app.use(morgan('dev'))
 // router
 app.use('/items', itemsRouter)
 
+// error handling
+app.use((err, req, res, next) => {
+    console.log(err)
+    return res.send({ errMsg: err.message})
+})
+
 app.listen(PORT, () => {
     console.log(`App started on port" ${PORT}`)
 })

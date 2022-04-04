@@ -10,7 +10,7 @@ function App() {
   const getItems = () => {
     axios.get('/items')
     .then(res => setItems(res.data))
-    .catch(err => console.log(err))
+    .catch(err => console.log(err.response.data.errMsg))
   }
 
   const addItem = (newItem) => {
